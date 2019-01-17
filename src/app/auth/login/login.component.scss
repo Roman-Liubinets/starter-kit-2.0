@@ -1,0 +1,15 @@
+.login {
+  padding: 15px;
+
+  .login-container {
+    .email {
+      margin-bottom: 10px;
+      label {
+        display: flex;
+      }
+      input {
+        display: flex;
+      }
+    }
+  }
+}
