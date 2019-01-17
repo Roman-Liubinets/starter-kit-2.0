@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { MaterialModule } from './material.module';
     BrowserModule,
     HttpClientModule,
     MaterialModule,
+    AuthModule,
     // EffectsModule.forRoot([]),
   ],
   providers: [],
