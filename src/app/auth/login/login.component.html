@@ -1,14 +1,24 @@
 <div class="login">
   <div class="login-container">
-    <h3>Login</h3>
+    <h3>LOGIN</h3>
     <form>
       <div class="email input-group">
-        <label>Email</label>
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-at"></i></span>
+        </div>
         <input type="text" class="form-control" placeholder="enter email" />
       </div>
       <div class="password input-group">
-        <label>Password</label>
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-key"></i></span>
+        </div>
         <input type="text" class="form-control" placeholder="enter password" />
+      </div>
+      <div class="action_button">
+        <button type="button" class="btn btn-lg btn-block enter">LOGIN</button>
+      </div>
+      <div class="register_route">
+        <span>Don't have an account? <a href="">Sign up</a></span>
       </div>
     </form>
   </div>

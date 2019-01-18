@@ -1,15 +1,25 @@
 .login {
-  padding: 15px;
+  padding: 40px 35px;
 
   .login-container {
+    h3 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
     .email {
       margin-bottom: 10px;
-      label {
-        display: flex;
-      }
-      input {
-        display: flex;
-      }
+    }
+    .password {
+      margin-bottom: 40px;
+    }
+    .enter {
+      background-color: #3cb371;
+      color: #ffffffff;
+    }
+    .register_route {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
     }
   }
 }
