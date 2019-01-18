@@ -4,13 +4,14 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
+import { reducers } from './store/app.reducers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     MaterialModule,
     AuthModule,
     AppRoutingModule,
-    // EffectsModule.forRoot([]),
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
     TooltipModule.forRoot(),
   ],
   providers: [],
