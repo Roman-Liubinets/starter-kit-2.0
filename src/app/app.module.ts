@@ -12,6 +12,7 @@ import { MaterialModule } from './material.module';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { reducers } from './store/app.reducers';
+import { AuthService } from './auth/services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,7 @@ import { reducers } from './store/app.reducers';
     EffectsModule.forRoot([]),
     TooltipModule.forRoot(),
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
