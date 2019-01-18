@@ -1,3 +1,69 @@
-<p>
-  register works!
-</p>
+<div class="registration">
+  <div class="registration-container">
+    <h3>Registration</h3>
+    <form [formGroup]="form" (ngSubmit)="onRegister(form)">
+      <div class="email input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-at"></i></span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="Email"
+          placeholder="Email"
+        />
+      </div>
+      <span
+        class="form_help_text"
+        *ngIf="form.get('Email').invalid && form.get('Email').touched"
+      >
+        <span *ngIf="form.get('Email')['errors']['required']"
+          >Email can not be empty.</span
+        >
+        <span *ngIf="form.get('Email')['errors']['email']"
+          >Enter the correct email.</span
+        >
+      </span>
+      <div class="password input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-key"></i></span>
+        </div>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="Password"
+          placeholder="********"
+        />
+      </div>
+      <span
+        class="form_help_text"
+        *ngIf="form.get('Password').invalid && form.get('Password').touched"
+      >
+        <span *ngIf="form.get('Password')['errors']['required']"
+          >Password can not be empty.</span
+        >
+      </span>
+      <div class="password input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-key"></i></span>
+        </div>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="Check_Pass"
+          placeholder="********"
+        />
+      </div>
+      <div class="action_button">
+        <button type="submit" class="btn btn-lg btn-block enter">
+          REGISTER
+        </button>
+      </div>
+      <div class="register_route">
+        <span
+          >Do you have an account? <a [routerLink]="'/login'">Sign in</a></span
+        >
+      </div>
+    </form>
+  </div>
+</div>
