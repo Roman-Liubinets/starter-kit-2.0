@@ -10,4 +10,8 @@ export class AuthService {
   registerUser(form_data) {
     return this.http.post('http://localhost:8081/api/register/user', form_data);
   }
+
+  login(email) {
+    return this.http.get(`http://localhost:8081/api/login/user/${email}`);
+  }
 }

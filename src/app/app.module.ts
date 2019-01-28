@@ -25,6 +25,9 @@ import { AuthService } from './auth/services/auth.service';
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     TooltipModule.forRoot(),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10,
+    }),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],

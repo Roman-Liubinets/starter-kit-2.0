@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
+import { Store } from '@ngrx/store';
+import * as fromAuth from '../store';
+
 import { Login } from '../models/auth.model';
 
 @Component({
@@ -12,7 +15,10 @@ import { Login } from '../models/auth.model';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<fromAuth.AuthState>,
+  ) {}
 
   ngOnInit() {
     this.formInit();
@@ -34,7 +40,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.checkValidation(this.form);
     if (this.form.valid) {
-      console.log('true');
+      this.store.dispatch(new fromAuth.Login(this.form.value));
     }
   }
 }
