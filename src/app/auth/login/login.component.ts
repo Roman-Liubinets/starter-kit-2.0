@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     this.checkValidation(this.form);
     if (this.form.valid) {
-      this.store.dispatch(new fromAuth.Login(this.form.value));
+      this.store.dispatch(new fromAuth.Login(this.form.get('Email').value));
     }
   }
 }

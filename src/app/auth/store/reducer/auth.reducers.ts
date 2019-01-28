@@ -3,6 +3,7 @@ import * as authModels from '../../models/auth.model';
 
 export interface AuthState {
   login_data: authModels.Login;
+  email: string;
   registration_data: authModels.Registration;
   // login_response_data: authModels.Login;
   // registration_response_data: authModels.Registration;
@@ -17,6 +18,7 @@ export const initialState: AuthState = {
     Email: '',
     Password: '',
   },
+  email: '',
   registration_data: {
     Email: '',
     Password: '',

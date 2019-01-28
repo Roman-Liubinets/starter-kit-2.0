@@ -12,6 +12,7 @@ export class AuthService {
   }
 
   login(email) {
+    console.log('TCL: AuthService -> login -> email', email);
     return this.http.get(`http://localhost:8081/api/login/user/${email}`);
   }
 }
