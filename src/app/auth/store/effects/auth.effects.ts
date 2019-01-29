@@ -19,11 +19,12 @@ export class AuthEffects {
   @Effect()
   login$ = this.actions$.ofType(authActions.LOGIN).pipe(
     map((action: authActions.Login) => action.payload),
-    switchMap(loadObj => {
-      return this.authService.login(loadObj).pipe(
-        map((login_data: any) => new authActions.LoginSuccess(login_data.Data)),
-        catchError(error => of(new authActions.LoginFail(error))),
-      );
+    switchMap(loadObg => {
+      return this.authService
+        .login(loadObg)
+        .pipe(
+          map((loaded_data: any) => new authActions.LoginSuccess(loaded_data)),
+        );
     }),
   );
 }

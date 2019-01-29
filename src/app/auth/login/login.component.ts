@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromAuth from '../store';
 
+import { AuthService } from '../services/auth.service';
 import { Login } from '../models/auth.model';
 
 @Component({
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store: Store<fromAuth.AuthState>,
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,25 @@ export class LoginComponent implements OnInit {
     this.checkValidation(this.form);
     if (this.form.valid) {
       this.store.dispatch(new fromAuth.Login(this.form.get('Email').value));
+      this.store.select(fromAuth.getLoaded).subscribe((loaded: boolean) => {
+        console.log('TCL: LoginComponent -> onLogin -> loaded', loaded);
+        if (loaded) {
+          this.store
+            .select(fromAuth.getAuthDataState)
+            .subscribe((store_data: any) => {
+              if (store_data.login_response_data) {
+                if (
+                  store_data.login_response_data.Email ===
+                  this.form.get('Email').value
+                ) {
+                  console.log('Logged!!!');
+                }
+              } else {
+                return;
+              }
+            });
+        }
+      });
     }
   }
 }

@@ -29,7 +29,7 @@ export const authLoading = createSelector(
   fromAuth.getAuthLoading,
 );
 
-export const getNewsLoaded = createSelector(
+export const getLoaded = createSelector(
   getAuthDataState,
   fromAuth.getAuthLoaded,
 );

@@ -42,7 +42,7 @@ export function reducer(
     // ---------------------------------------------------------
     case authActions.LOGIN: {
       const login_value = action.payload;
-      console.log('TCL: login_value', login_value);
+      // console.log('TCL: login_value', login_value);
       return {
         ...state,
         login_data: login_value,
@@ -53,6 +53,7 @@ export function reducer(
 
     case authActions.LOGIN_SUCCESS: {
       const data = action.payload;
+      console.log('TCL: data', data);
       return {
         ...state,
         login_response_data: data,
