@@ -27,7 +27,18 @@ export class AddDialogComponent implements OnInit {
     });
   }
 
-  save() {}
+  private checkValidation(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+    });
+  }
+
+  save() {
+    this.checkValidation(this.form);
+    if (this.form.valid) {
+      console.log(this.form.value);
+    }
+  }
 
   closeDialog() {
     this.dialogRef.close();
