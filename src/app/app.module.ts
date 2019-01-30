@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { StoreModule } from '@ngrx/store';
@@ -23,6 +24,7 @@ import { SystemModule } from './system/system.module';
     HttpClientModule,
     MaterialModule,
     AuthModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SystemModule,
     StoreModule.forRoot(reducers),
