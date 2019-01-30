@@ -2,32 +2,34 @@
   <span aria-hidden="true" class="times"> </span>
 </button>
 <h2 mat-dialog-title>Add items</h2>
-<div class="content">
-  <div class="first input-group">
-    <input
-      type="text"
-      class="form-control"
-      formControlName="Text"
-      placeholder="first"
-    />
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="content">
+    <div class="first input-group">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="first"
+        placeholder="first"
+      />
+    </div>
+    <div class="last input-group">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="last"
+        placeholder="last"
+      />
+    </div>
+    <div class="something input-group">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="something"
+        placeholder="something"
+      />
+    </div>
+    <div class="action">
+      <button type="submit" class="btn btn-lg btn-block">ADD !</button>
+    </div>
   </div>
-  <div class="last input-group">
-    <input
-      type="text"
-      class="form-control"
-      formControlName="Password"
-      placeholder="last"
-    />
-  </div>
-  <div class="something input-group">
-    <input
-      type="text"
-      class="form-control"
-      formControlName="Password"
-      placeholder="something"
-    />
-  </div>
-  <div class="action">
-    <button type="submit" class="btn btn-lg btn-block">ADD !</button>
-  </div>
-</div>
+</form>
