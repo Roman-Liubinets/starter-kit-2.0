@@ -27,4 +27,22 @@ export class AuthEffects {
         );
     }),
   );
+
+  // ---------------------------------------------------------
+  // Registration Actions
+  // ---------------------------------------------------------
+  @Effect()
+  registration$ = this.actions$.ofType(authActions.REGISTRATION).pipe(
+    map((action: authActions.Registration) => action.payload),
+    switchMap(loadObg => {
+      return this.authService
+        .registerUser(loadObg)
+        .pipe(
+          map(
+            (loaded_data: any) =>
+              new authActions.RegistrationSuccess(loaded_data),
+          ),
+        );
+    }),
+  );
 }

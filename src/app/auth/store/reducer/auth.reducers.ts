@@ -22,6 +22,7 @@ export const initialState: AuthState = {
   registration_data: {
     Email: '',
     Password: '',
+    name: '',
   },
   login_response_data: {},
   registration_response_data: {},
@@ -34,41 +35,6 @@ export function reducer(
   action: authActions.AuthActions,
 ): AuthState {
   switch (action.type) {
-    // ---------------------------------------------------------
-    // Auth Actions
-    // ---------------------------------------------------------
-    // ---------------------------------------------------------
-    // Login Actions
-    // ---------------------------------------------------------
-    case authActions.LOGIN: {
-      const login_value = action.payload;
-      // console.log('TCL: login_value', login_value);
-      return {
-        ...state,
-        login_data: login_value,
-        loading: true,
-        loaded: false,
-      };
-    }
-
-    case authActions.LOGIN_SUCCESS: {
-      const data = action.payload;
-      console.log('TCL: data', data);
-      return {
-        ...state,
-        login_response_data: data,
-        loading: false,
-        loaded: true,
-      };
-    }
-
-    case authActions.LOGIN_FAIL: {
-      return {
-        ...state,
-        loading: false,
-        loaded: false,
-      };
-    }
     // ---------------------------------------------------------
     // Registration Actions
     // ---------------------------------------------------------
@@ -97,6 +63,39 @@ export function reducer(
         ...state,
         loading: false,
         loaded: false,
+      };
+    }
+    // ---------------------------------------------------------
+    // Auth Actions
+    // ---------------------------------------------------------
+    // ---------------------------------------------------------
+    // Login Actions
+    // ---------------------------------------------------------
+    case authActions.LOGIN: {
+      const login_value = action.payload;
+      return {
+        ...state,
+        login_data: login_value,
+        loading: true,
+        loaded: false,
+      };
+    }
+
+    case authActions.LOGIN_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+      };
+    }
+
+    case authActions.LOGIN_SUCCESS: {
+      const data = action.payload;
+      return {
+        ...state,
+        login_response_data: data,
+        loading: false,
+        loaded: true,
       };
     }
   }

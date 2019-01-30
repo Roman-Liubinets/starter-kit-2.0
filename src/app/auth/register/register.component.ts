@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
+import { Store } from '@ngrx/store';
+import * as fromAuth from '../store';
+
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -15,6 +18,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private store: Store<fromAuth.AuthState>,
     private router: Router,
     private route: ActivatedRoute,
   ) {}
@@ -27,6 +31,7 @@ export class RegisterComponent implements OnInit {
     this.form = this.fb.group({
       Email: ['', [Validators.required, Validators.email]],
       Password: ['', [Validators.required, Validators.minLength(1)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -39,10 +44,14 @@ export class RegisterComponent implements OnInit {
   onRegister() {
     this.checkValidation(this.form);
     if (this.form.valid) {
-      this.authService.registerUser(this.form.value).subscribe((res: any) => {
-        console.log('​RegisterComponent -> onRegister -> res', res);
-        this.router.navigate(['/login']);
-      });
+      this.store.dispatch(new fromAuth.Registration(this.form.value));
+      this.store
+        .select(fromAuth.getAuthDataState)
+        .subscribe((register_response: any) => {
+          if (register_response.registration_response_data) {
+            this.router.navigate(['/login']);
+          }
+        });
     }
   }
 }

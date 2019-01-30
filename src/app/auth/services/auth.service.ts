@@ -8,6 +8,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   registerUser(form_data) {
+    console.log('TCL: AuthService -> registerUser -> form_data', form_data);
     return this.http.post('http://localhost:8081/api/user', form_data);
   }
 
