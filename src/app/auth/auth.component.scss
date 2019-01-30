@@ -1,0 +1,14 @@
+.container-login_registration {
+  display: flex;
+  justify-content: center;
+  margin-top: 30%;
+  .login_registration {
+    min-height: 360px;
+    height: 100%;
+    width: 420px;
+    -webkit-box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 25px -6px rgba(0, 0, 0, 0.75);
+    border-radius: 5%;
+  }
+}

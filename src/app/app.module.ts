@@ -1,14 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { AuthModule } from './auth/auth.module';
+import { AppRoutingModule } from './app-routing.module';
+import { reducers } from './store/app.reducers';
+import { AuthService } from './auth/services/auth.service';
+import { SessionService } from './auth/services/session.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,9 +22,15 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     MaterialModule,
     AuthModule,
-    // EffectsModule.forRoot([]),
+    AppRoutingModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
+    TooltipModule.forRoot(),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10,
+    }),
   ],
-  providers: [],
+  providers: [AuthService, SessionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

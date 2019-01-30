@@ -1,0 +1,30 @@
+.login {
+  padding: 40px 35px;
+
+  .login-container {
+    h3 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .password {
+      margin-top: 10px;
+    }
+    .enter {
+      background-color: #3cb371;
+      color: #ffffffff;
+    }
+    .action_button {
+      margin-top: 40px;
+    }
+    .register_route {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+    }
+    .form_help_text {
+      display: block;
+      color: #dc3545;
+      font-weight: bold;
+    }
+  }
+}
