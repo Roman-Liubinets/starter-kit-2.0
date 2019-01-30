@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
 import { reducers } from './store/app.reducers';
 import { AuthService } from './auth/services/auth.service';
+import { SessionService } from './auth/services/session.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +30,7 @@ import { AuthService } from './auth/services/auth.service';
       maxAge: 10,
     }),
   ],
-  providers: [AuthService],
+  providers: [AuthService, SessionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

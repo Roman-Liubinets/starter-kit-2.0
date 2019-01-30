@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import * as fromAuth from '../store';
 
 import { AuthService } from '../services/auth.service';
+import { SessionService } from '../services/session.service';
 import { Login } from '../models/auth.model';
 import { Message } from '../models/message.model';
 
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store<fromAuth.AuthState>,
     private authService: AuthService,
+    private sessionService: SessionService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -64,6 +67,13 @@ export class LoginComponent implements OnInit {
                 store_data.login_response_data.Password ===
                 this.form.get('Password').value
               ) {
+                this.message.text = '';
+                window.localStorage.setItem(
+                  'user',
+                  JSON.stringify(this.form.value),
+                );
+                this.sessionService.login();
+                this.router.navigate(['']);
               } else {
                 this.showMessage('Password incorrect!', 'danger');
               }
