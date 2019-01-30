@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { reducers } from './store/app.reducers';
 import { AuthService } from './auth/services/auth.service';
 import { SessionService } from './auth/services/session.service';
+import { SystemModule } from './system/system.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { SessionService } from './auth/services/session.service';
     MaterialModule,
     AuthModule,
     AppRoutingModule,
+    SystemModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     TooltipModule.forRoot(),

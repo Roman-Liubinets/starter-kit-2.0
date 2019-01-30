@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
                   JSON.stringify(this.form.value),
                 );
                 this.sessionService.login();
-                this.router.navigate(['']);
+                this.router.navigate(['/system', 'main']);
               } else {
                 this.showMessage('Password incorrect!', 'danger');
               }
