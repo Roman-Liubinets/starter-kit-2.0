@@ -12,6 +12,14 @@
         placeholder="first"
       />
     </div>
+    <span
+      class="form_text_error"
+      *ngIf="form.get('first').invalid && form.get('first').touched"
+    >
+      <span *ngIf="form.get('first')['errors']['required']"
+        >First can not be empty.</span
+      >
+    </span>
     <div class="last input-group">
       <input
         type="text"
@@ -20,6 +28,14 @@
         placeholder="last"
       />
     </div>
+    <span
+      class="form_text_error"
+      *ngIf="form.get('last').invalid && form.get('last').touched"
+    >
+      <span *ngIf="form.get('last')['errors']['required']"
+        >last can not be empty.</span
+      >
+    </span>
     <div class="something input-group">
       <input
         type="text"
@@ -28,8 +44,22 @@
         placeholder="something"
       />
     </div>
+    <span
+      class="form_text_error"
+      *ngIf="form.get('something').invalid && form.get('something').touched"
+    >
+      <span *ngIf="form.get('something')['errors']['required']"
+        >something can not be empty.</span
+      >
+    </span>
     <div class="action">
-      <button type="submit" class="btn btn-lg btn-block">ADD !</button>
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="btn btn-lg btn-block"
+      >
+        ADD !
+      </button>
     </div>
   </div>
 </form>

@@ -24,9 +24,9 @@ export class AddDialogComponent implements OnInit {
 
   formInit() {
     this.form = this.fb.group({
-      first: ['', [Validators.required, Validators.minLength(1)]],
-      last: ['', [Validators.required, Validators.minLength(1)]],
-      something: ['', [Validators.required, Validators.minLength(1)]],
+      first: ['', [Validators.required]],
+      last: ['', [Validators.required]],
+      something: ['', [Validators.required]],
     });
   }
 
