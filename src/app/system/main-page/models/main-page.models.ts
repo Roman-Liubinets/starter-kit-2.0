@@ -1,5 +1,5 @@
 export interface LoadedItem {
-  _id: string;
+  _id?: string;
   first?: string;
   last?: string;
   something?: string;
