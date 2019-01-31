@@ -8,12 +8,7 @@ export interface MainPageState {
 }
 
 export const initialState: MainPageState = {
-  items: {
-    _id: '',
-    first: '',
-    last: '',
-    something: '',
-  },
+  items: {},
   loaded: false,
   loading: false,
 };
@@ -31,6 +26,7 @@ export function reducer(
       };
     }
     case mainPageActions.LOAD_ITEM_SUCCESS: {
+      console.log(action.payload);
       return {
         ...state,
         items: action.payload,

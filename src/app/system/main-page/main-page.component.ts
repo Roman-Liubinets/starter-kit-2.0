@@ -16,7 +16,7 @@ import * as mainPageModels from './models/main-page.models';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  items$: Observable<mainPageModels.LoadedItem[]>;
+  items$: Observable<mainPageModels.LoadedItem>;
 
   constructor(
     private dialog: MatDialog,
@@ -34,12 +34,6 @@ export class MainPageComponent implements OnInit {
       panelClass: 'add-item',
       data: null,
       disableClose: true,
-    });
-  }
-
-  getAllItems() {
-    this.mainPageService.getItems().subscribe((res: any) => {
-      console.log('TCL: MainPageComponent -> getAllItems -> res', res);
     });
   }
 }
