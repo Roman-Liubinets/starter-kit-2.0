@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 
+import { MainPageService } from './services/main-page.service';
 import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
 
 @Component({
@@ -9,15 +10,26 @@ import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private dialog: MatDialog,
+    private mainPageService: MainPageService,
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getAllItems();
+  }
 
   openAddDialog() {
     this.dialog.open(AddDialogComponent, {
       panelClass: 'add-item',
       data: null,
       disableClose: true,
+    });
+  }
+
+  getAllItems() {
+    this.mainPageService.getItems().subscribe((res: any) => {
+      console.log('TCL: MainPageComponent -> getAllItems -> res', res);
     });
   }
 }
