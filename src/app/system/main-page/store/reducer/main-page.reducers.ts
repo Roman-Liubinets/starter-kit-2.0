@@ -26,7 +26,6 @@ export function reducer(
     case mainPageActions.LOAD_ITEM: {
       return {
         ...state,
-        items: action.payload,
         loading: true,
         loaded: false,
       };
@@ -49,3 +48,5 @@ export function reducer(
   }
   return state;
 }
+
+export const getItems = (state: MainPageState) => state.items;

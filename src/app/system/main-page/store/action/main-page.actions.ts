@@ -7,7 +7,7 @@ export const LOAD_ITEM_FAIL = '[MP] Load item Fail';
 
 export class LoadItem implements Action {
   readonly type = LOAD_ITEM;
-  constructor(public payload: fromMPModels.LoadedItem) {}
+  constructor() {}
 }
 
 export class LoadItemSuccess implements Action {
