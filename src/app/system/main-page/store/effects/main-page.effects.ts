@@ -27,4 +27,14 @@ export class MainPageEffects {
       );
     }),
   );
+
+  @Effect()
+  add_item$ = this.actions$.ofType(mainPageActions.ADD_ITEM).pipe(
+    switchMap(item => {
+      return this.mainPageService.createItem(item.payload).pipe(
+        map(added_item => new mainPageActions.AddItemSuccess(added_item)),
+        catchError(error => of(new mainPageActions.AddItemFail(error))),
+      );
+    }),
+  );
 }

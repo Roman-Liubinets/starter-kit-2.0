@@ -18,6 +18,18 @@ export function reducer(
   action: mainPageActions.MainPageActions,
 ): MainPageState {
   switch (action.type) {
+    // -------------------------------------------------------
+    // Add Item
+    // -------------------------------------------------------
+    case mainPageActions.ADD_ITEM: {
+      return { ...state };
+    }
+    case mainPageActions.ADD_ITEM_SUCCESS: {
+      return { ...state };
+    }
+    case mainPageActions.ADD_ITEM_FAIL: {
+      return { ...state };
+    }
     case mainPageActions.LOAD_ITEM: {
       return {
         ...state,
@@ -26,7 +38,7 @@ export function reducer(
       };
     }
     case mainPageActions.LOAD_ITEM_SUCCESS: {
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         items: action.payload,

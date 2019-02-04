@@ -2,6 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { Store } from '@ngrx/store';
+import * as fromStore from '../../store';
+
 import { MainPageService } from '../../services/main-page.service';
 @Component({
   selector: 'app-add-dialog',
@@ -16,6 +19,7 @@ export class AddDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<AddDialogComponent>,
     private mainPageService: MainPageService,
+    private store: Store<fromStore.MainPageState>,
   ) {}
 
   ngOnInit() {
@@ -40,9 +44,11 @@ export class AddDialogComponent implements OnInit {
     this.checkValidation(this.form);
     if (this.form.valid) {
       console.log(this.form.value);
-      this.mainPageService.createItem(this.form.value).subscribe(() => {
-        return;
-      });
+      // this.mainPageService.createItem(this.form.value).subscribe(() => {
+      //   return;
+      // });
+      this.store.dispatch(new fromStore.AddItem(this.form.value));
+      this.closeDialog();
     }
   }
 
