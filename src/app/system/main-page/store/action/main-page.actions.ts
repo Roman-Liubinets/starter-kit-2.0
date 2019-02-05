@@ -38,6 +38,24 @@ export class AddItemFail implements Action {
   readonly type = ADD_ITEM_FAIL;
   constructor(public payload: any) {}
 }
+// -------------------------------------------------------
+// Edit Item
+// -------------------------------------------------------
+export const EDIT_ITEM = '[MP] Edit item';
+export const EDIT_ITEM_SUCCESS = '[MP] Edit Success';
+export const EDIT_ITEM_FAIL = '[MP] Edit Fail';
+
+export class EditItem implements Action {
+  readonly type = EDIT_ITEM;
+  constructor(public payload: fromMPModels.LoadedItem) {}
+}
+export class EditItemSuccess implements Action {
+  readonly type = EDIT_ITEM_SUCCESS;
+}
+export class EditItemFail implements Action {
+  readonly type = EDIT_ITEM_FAIL;
+  constructor(public payload: any) {}
+}
 
 export type MainPageActions =
   | LoadItem
@@ -45,4 +63,7 @@ export type MainPageActions =
   | LoadItemFail
   | AddItem
   | AddItemSuccess
-  | AddItemFail;
+  | AddItemFail
+  | EditItem
+  | EditItemSuccess
+  | EditItemFail;

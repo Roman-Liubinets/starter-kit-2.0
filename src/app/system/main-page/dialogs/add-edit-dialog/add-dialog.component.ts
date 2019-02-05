@@ -5,7 +5,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 
-import { MainPageService } from '../../services/main-page.service';
 @Component({
   selector: 'app-add-dialog',
   templateUrl: './add-edit-dialog.component.html',
@@ -19,7 +18,6 @@ export class AddEditDialogComponent implements OnInit {
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<AddEditDialogComponent>,
-    private mainPageService: MainPageService,
     private store: Store<fromStore.MainPageState>,
   ) {}
 
@@ -29,7 +27,6 @@ export class AddEditDialogComponent implements OnInit {
   }
 
   formInit() {
-    // console.log(this.data);
     if (this.add) {
       this.form = this.fb.group({
         first: ['', [Validators.required]],
@@ -38,6 +35,7 @@ export class AddEditDialogComponent implements OnInit {
       });
     } else if (!this.add) {
       this.form = this.fb.group({
+        id: [this.data._id],
         first: [this.data.first, [Validators.required]],
         last: [this.data.last, [Validators.required]],
         something: [this.data.something, [Validators.required]],
@@ -58,7 +56,7 @@ export class AddEditDialogComponent implements OnInit {
         this.store.dispatch(new fromStore.AddItem(this.form.value));
         this.closeDialog();
       } else if (!this.add) {
-        // this.store.dispatch(new fromStore.AddItem(this.form.value));
+        this.store.dispatch(new fromStore.EditItem(this.form.value));
         this.closeDialog();
       }
     }

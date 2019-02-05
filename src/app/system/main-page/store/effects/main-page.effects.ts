@@ -38,4 +38,15 @@ export class MainPageEffects {
       );
     }),
   );
+
+  @Effect()
+  edit_item$ = this.actions$.ofType(mainPageActions.EDIT_ITEM).pipe(
+    map((action: mainPageActions.EditItem) => action.payload),
+    switchMap(item => {
+      return this.mainPageService.editItem(item).pipe(
+        map(item_response => new mainPageActions.EditItemSuccess()),
+        catchError(error => of(new mainPageActions.EditItemFail(error))),
+      );
+    }),
+  );
 }
