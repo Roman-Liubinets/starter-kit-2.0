@@ -64,6 +64,18 @@ export function reducer(
     case mainPageActions.EDIT_ITEM_FAIL: {
       return { ...state };
     }
+    // -------------------------------------------------------
+    // Remove Item
+    // -------------------------------------------------------
+    case mainPageActions.REMOVE_ITEM: {
+      return { ...state };
+    }
+    case mainPageActions.REMOVE_ITEM_SUCCESS: {
+      return { ...state };
+    }
+    case mainPageActions.REMOVE_ITEM_FAIL: {
+      return { ...state };
+    }
   }
   return state;
 }

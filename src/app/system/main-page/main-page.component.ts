@@ -7,6 +7,7 @@ import * as fromStore from './store/index';
 
 import { MainPageService } from './services/main-page.service';
 import { AddEditDialogComponent } from './dialogs/add-edit-dialog/add-dialog.component';
+import { RemoveDialogComponent } from './dialogs/remove-dialog/remove-dialog.component';
 
 import * as mainPageModels from './models/main-page.models';
 
@@ -43,6 +44,17 @@ export class MainPageComponent implements OnInit {
   openEditDialog(item) {
     const dialogRef = this.dialog.open(AddEditDialogComponent, {
       panelClass: 'add-item',
+      data: item,
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.store.dispatch(new fromStore.LoadItem());
+    });
+  }
+
+  openRemoveDialog(item) {
+    const dialogRef = this.dialog.open(RemoveDialogComponent, {
+      panelClass: 'remove-item',
       data: item,
       disableClose: true,
     });

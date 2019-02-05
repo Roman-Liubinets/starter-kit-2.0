@@ -1,0 +1,43 @@
+button.btn_close,
+button.btn_close:focus,
+button.btn_close:hover {
+  position: relative;
+  left: 157px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #3e3e3e;
+  cursor: pointer;
+  opacity: 1;
+
+  .times {
+    position: relative;
+    height: 16px;
+    display: block;
+    width: 16px;
+
+    &::before,
+    &::after {
+      display: block;
+      content: '';
+      height: 2px;
+      width: 16px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transform: rotate(45deg);
+      background-color: #3e3e3e;
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+.action_buttons {
+  display: flex;
+  justify-content: center;
+  button {
+    width: 66%;
+  }
+}
