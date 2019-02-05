@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
-
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Store } from '@ngrx/store';
 import * as fromStore from './store/index';
 
@@ -18,6 +19,7 @@ import * as mainPageModels from './models/main-page.models';
 })
 export class MainPageComponent implements OnInit {
   items$: Observable<mainPageModels.LoadedItem[]>;
+  private sub: Subscription = new Subscription();
 
   constructor(
     private dialog: MatDialog,
@@ -28,38 +30,34 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
     this.items$ = this.store.select<any>(fromStore.getAllItems);
     this.store.dispatch(new fromStore.LoadItem());
+    this.sub.add(
+      this.mainPageService.updateItems.subscribe(() =>
+        this.store.dispatch(new fromStore.LoadItem()),
+      ),
+    );
   }
 
   openAddDialog() {
-    const dialogRef = this.dialog.open(AddEditDialogComponent, {
+    this.dialog.open(AddEditDialogComponent, {
       panelClass: 'add-item',
       data: null,
       disableClose: true,
     });
-    dialogRef.afterClosed().subscribe(() => {
-      this.store.dispatch(new fromStore.LoadItem());
-    });
   }
 
   openEditDialog(item) {
-    const dialogRef = this.dialog.open(AddEditDialogComponent, {
+    this.dialog.open(AddEditDialogComponent, {
       panelClass: 'add-item',
       data: item,
       disableClose: true,
     });
-    dialogRef.afterClosed().subscribe(() => {
-      this.store.dispatch(new fromStore.LoadItem());
-    });
   }
 
   openRemoveDialog(item) {
-    const dialogRef = this.dialog.open(RemoveDialogComponent, {
+    this.dialog.open(RemoveDialogComponent, {
       panelClass: 'remove-item',
       data: item,
       disableClose: true,
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      this.store.dispatch(new fromStore.LoadItem());
     });
   }
 }
