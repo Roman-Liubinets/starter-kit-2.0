@@ -18,6 +18,10 @@ export class MainPageService {
     return this.http.put('http://localhost:8081/api/item', form_data);
   }
 
+  removeItem(id) {
+    return this.http.delete(`http://localhost:8081/api/item/${id}`);
+  }
+
   getItems(): Observable<LoadedItem[]> {
     return this.http
       .get<LoadedItem[]>('http://localhost:8081/api/items')

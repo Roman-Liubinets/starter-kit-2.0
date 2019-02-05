@@ -44,8 +44,19 @@ export class MainPageEffects {
     map((action: mainPageActions.EditItem) => action.payload),
     switchMap(item => {
       return this.mainPageService.editItem(item).pipe(
-        map(item_response => new mainPageActions.EditItemSuccess()),
+        map(() => new mainPageActions.EditItemSuccess()),
         catchError(error => of(new mainPageActions.EditItemFail(error))),
+      );
+    }),
+  );
+
+  @Effect()
+  remove_item$ = this.actions$.ofType(mainPageActions.REMOVE_ITEM).pipe(
+    map((action: mainPageActions.RemoveItem) => action.payload),
+    switchMap(item => {
+      return this.mainPageService.removeItem(item._id).pipe(
+        map(() => new mainPageActions.RemoveItemSuccess()),
+        catchError(error => of(new mainPageActions.RemoveItemFail(error))),
       );
     }),
   );

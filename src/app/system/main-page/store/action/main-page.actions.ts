@@ -56,6 +56,24 @@ export class EditItemFail implements Action {
   readonly type = EDIT_ITEM_FAIL;
   constructor(public payload: any) {}
 }
+// -------------------------------------------------------
+// Remove Item
+// -------------------------------------------------------
+export const REMOVE_ITEM = '[MP] Remove item';
+export const REMOVE_ITEM_SUCCESS = '[MP] Remove Success';
+export const REMOVE_ITEM_FAIL = '[MP] Remove Fail';
+
+export class RemoveItem implements Action {
+  readonly type = REMOVE_ITEM;
+  constructor(public payload: fromMPModels.LoadedItem) {}
+}
+export class RemoveItemSuccess implements Action {
+  readonly type = REMOVE_ITEM_SUCCESS;
+}
+export class RemoveItemFail implements Action {
+  readonly type = REMOVE_ITEM_FAIL;
+  constructor(public payload: any) {}
+}
 
 export type MainPageActions =
   | LoadItem
@@ -66,4 +84,7 @@ export type MainPageActions =
   | AddItemFail
   | EditItem
   | EditItemSuccess
-  | EditItemFail;
+  | EditItemFail
+  | RemoveItem
+  | RemoveItemSuccess
+  | RemoveItemFail;

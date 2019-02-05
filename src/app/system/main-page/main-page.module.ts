@@ -9,6 +9,7 @@ import { reducers, effects } from './store';
 import { MaterialModule } from '../../material.module';
 import { MainPageComponent } from '../main-page/main-page.component';
 import { AddEditDialogComponent } from '../main-page/dialogs/add-edit-dialog/add-dialog.component';
+import { RemoveDialogComponent } from './dialogs/remove-dialog/remove-dialog.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,11 @@ import { AddEditDialogComponent } from '../main-page/dialogs/add-edit-dialog/add
     StoreModule.forFeature('main page', reducers),
     EffectsModule.forFeature(effects),
   ],
-  declarations: [MainPageComponent, AddEditDialogComponent],
-  entryComponents: [AddEditDialogComponent],
+  declarations: [
+    MainPageComponent,
+    AddEditDialogComponent,
+    RemoveDialogComponent,
+  ],
+  entryComponents: [AddEditDialogComponent, RemoveDialogComponent],
 })
 export class MainPageModule {}
