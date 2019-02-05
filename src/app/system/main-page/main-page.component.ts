@@ -36,7 +36,7 @@ export class MainPageComponent implements OnInit {
       disableClose: true,
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.items$ = this.store.select<any>(fromStore.getAllItems);
+      this.store.dispatch(new fromStore.LoadItem());
     });
   }
 }
