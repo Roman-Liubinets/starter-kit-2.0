@@ -43,10 +43,6 @@ export class AddDialogComponent implements OnInit {
   send() {
     this.checkValidation(this.form);
     if (this.form.valid) {
-      console.log(this.form.value);
-      // this.mainPageService.createItem(this.form.value).subscribe(() => {
-      //   return;
-      // });
       this.store.dispatch(new fromStore.AddItem(this.form.value));
       this.closeDialog();
     }

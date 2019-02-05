@@ -30,10 +30,13 @@ export class MainPageComponent implements OnInit {
   }
 
   openAddDialog() {
-    this.dialog.open(AddDialogComponent, {
+    const dialogRef = this.dialog.open(AddDialogComponent, {
       panelClass: 'add-item',
       data: null,
       disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.items$ = this.store.select<any>(fromStore.getAllItems);
     });
   }
 }
