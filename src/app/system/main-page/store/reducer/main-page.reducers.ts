@@ -18,18 +18,6 @@ export function reducer(
   action: mainPageActions.MainPageActions,
 ): MainPageState {
   switch (action.type) {
-    // -------------------------------------------------------
-    // Add Item
-    // -------------------------------------------------------
-    case mainPageActions.ADD_ITEM: {
-      return { ...state };
-    }
-    case mainPageActions.ADD_ITEM_SUCCESS: {
-      return { ...state };
-    }
-    case mainPageActions.ADD_ITEM_FAIL: {
-      return { ...state };
-    }
     case mainPageActions.LOAD_ITEM: {
       return {
         ...state,
@@ -51,6 +39,30 @@ export function reducer(
         loading: false,
         loaded: true,
       };
+    }
+    // -------------------------------------------------------
+    // Add Item
+    // -------------------------------------------------------
+    case mainPageActions.ADD_ITEM: {
+      return { ...state };
+    }
+    case mainPageActions.ADD_ITEM_SUCCESS: {
+      return { ...state };
+    }
+    case mainPageActions.ADD_ITEM_FAIL: {
+      return { ...state };
+    }
+    // -------------------------------------------------------
+    // Edit Item
+    // -------------------------------------------------------
+    case mainPageActions.EDIT_ITEM: {
+      return { ...state };
+    }
+    case mainPageActions.EDIT_ITEM_SUCCESS: {
+      return { ...state };
+    }
+    case mainPageActions.EDIT_ITEM_FAIL: {
+      return { ...state };
     }
   }
   return state;

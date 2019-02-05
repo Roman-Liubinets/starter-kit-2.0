@@ -14,6 +14,9 @@ export class MainPageService {
   createItem(form_data) {
     return this.http.post('http://localhost:8081/api/item', form_data);
   }
+  editItem(form_data) {
+    return this.http.put('http://localhost:8081/api/item', form_data);
+  }
 
   getItems(): Observable<LoadedItem[]> {
     return this.http

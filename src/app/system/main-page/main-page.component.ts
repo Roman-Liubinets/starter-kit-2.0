@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import * as fromStore from './store/index';
 
 import { MainPageService } from './services/main-page.service';
-import { AddDialogComponent } from './dialogs/add-dialog/add-dialog.component';
+import { AddEditDialogComponent } from './dialogs/add-edit-dialog/add-dialog.component';
 
 import * as mainPageModels from './models/main-page.models';
 
@@ -30,9 +30,20 @@ export class MainPageComponent implements OnInit {
   }
 
   openAddDialog() {
-    const dialogRef = this.dialog.open(AddDialogComponent, {
+    const dialogRef = this.dialog.open(AddEditDialogComponent, {
       panelClass: 'add-item',
       data: null,
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.store.dispatch(new fromStore.LoadItem());
+    });
+  }
+
+  openEditDialog(item) {
+    const dialogRef = this.dialog.open(AddEditDialogComponent, {
+      panelClass: 'add-item',
+      data: item,
       disableClose: true,
     });
     dialogRef.afterClosed().subscribe(() => {

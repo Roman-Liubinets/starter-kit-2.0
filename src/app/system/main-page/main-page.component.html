@@ -11,6 +11,7 @@
         <th scope="col">First</th>
         <th scope="col">Last</th>
         <th scope="col">Handle</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,17 @@
         <td>{{ item.first }}</td>
         <td>{{ item.last }}</td>
         <td>{{ item.something }}</td>
+        <td>
+          <div class="action_buttons">
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="openEditDialog(item)"
+            >
+              Edit</button
+            ><button type="button" class="btn btn-danger">Remove</button>
+          </div>
+        </td>
       </tr>
       <tr></tr>
     </tbody>
