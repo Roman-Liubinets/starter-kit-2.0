@@ -38,7 +38,8 @@ export function reducer(
       };
     }
     case mainPageActions.LOAD_ITEM_SUCCESS: {
-      // console.log(action.payload);
+      console.log(state);
+      console.log(action.payload);
       return {
         ...state,
         items: action.payload,

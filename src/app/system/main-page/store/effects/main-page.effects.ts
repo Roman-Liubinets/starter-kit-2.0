@@ -30,11 +30,30 @@ export class MainPageEffects {
 
   @Effect()
   add_item$ = this.actions$.ofType(mainPageActions.ADD_ITEM).pipe(
-    switchMap(item => {
+    switchMap((item: mainPageActions.AddItem) => {
       return this.mainPageService.createItem(item.payload).pipe(
-        map(added_item => new mainPageActions.AddItemSuccess(added_item)),
+        map(() => new mainPageActions.AddItemSuccess()),
         catchError(error => of(new mainPageActions.AddItemFail(error))),
       );
     }),
   );
+  // add_item$ = this.actions$.ofType(mainPageActions.ADD_ITEM).pipe(
+  //   switchMap((data: mainPageActions.AddItem) =>
+  //     this.mainPageService
+  //       .createItem(data.payload).pipe(
+  //               map(added_item => new mainPageActions.AddItemSuccess(added_item)),
+  //               catchError(error => of(new mainPageActions.AddItemFail(error))),
+  //             );
+  //   ),
+  // );
+  // switchMap((data: projectsActions.AddProject) =>
+  //   this.projectsService
+  //     .createProject(data.payload)
+  //     .map(() => {
+  //       return new projectsActions.AddProjectSuccess();
+  //     })
+  //     .catch(error =>
+  //       Observable.of(new projectsActions.AddProjectFail(error)),
+  //     ),
+  // );
 }

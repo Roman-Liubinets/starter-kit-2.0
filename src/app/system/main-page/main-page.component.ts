@@ -25,8 +25,8 @@ export class MainPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // this.store.dispatch(new fromStore.LoadItem());
     this.items$ = this.store.select<any>(fromStore.getAllItems);
-    this.store.dispatch(new fromStore.LoadItem());
   }
 
   openAddDialog() {

@@ -33,7 +33,7 @@ export class AddItem implements Action {
 }
 export class AddItemSuccess implements Action {
   readonly type = ADD_ITEM_SUCCESS;
-  constructor(public payload: fromMPModels.LoadedItem) {}
+  constructor() {}
 }
 export class AddItemFail implements Action {
   readonly type = ADD_ITEM_FAIL;
