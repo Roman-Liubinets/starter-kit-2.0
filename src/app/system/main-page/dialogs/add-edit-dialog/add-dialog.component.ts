@@ -8,16 +8,16 @@ import * as fromStore from '../../store';
 import { MainPageService } from '../../services/main-page.service';
 @Component({
   selector: 'app-add-dialog',
-  templateUrl: './add-dialog.component.html',
-  styleUrls: ['./add-dialog.component.scss'],
+  templateUrl: './add-edit-dialog.component.html',
+  styleUrls: ['./add-edit-dialog.component.scss'],
 })
-export class AddDialogComponent implements OnInit {
+export class AddEditDialogComponent implements OnInit {
   form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<AddDialogComponent>,
+    public dialogRef: MatDialogRef<AddEditDialogComponent>,
     private mainPageService: MainPageService,
     private store: Store<fromStore.MainPageState>,
   ) {}
