@@ -13,6 +13,7 @@ import { MainPageService } from '../../services/main-page.service';
 })
 export class AddEditDialogComponent implements OnInit {
   form: FormGroup;
+  add = false;
 
   constructor(
     private fb: FormBuilder,
@@ -23,15 +24,25 @@ export class AddEditDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.checkOpenDialogAction();
     this.formInit();
   }
 
   formInit() {
-    this.form = this.fb.group({
-      first: ['', [Validators.required]],
-      last: ['', [Validators.required]],
-      something: ['', [Validators.required]],
-    });
+    // console.log(this.data);
+    if (this.add) {
+      this.form = this.fb.group({
+        first: ['', [Validators.required]],
+        last: ['', [Validators.required]],
+        something: ['', [Validators.required]],
+      });
+    } else if (!this.add) {
+      this.form = this.fb.group({
+        first: [this.data.first, [Validators.required]],
+        last: [this.data.last, [Validators.required]],
+        something: [this.data.something, [Validators.required]],
+      });
+    }
   }
 
   private checkValidation(formGroup: FormGroup) {
@@ -43,12 +54,21 @@ export class AddEditDialogComponent implements OnInit {
   send() {
     this.checkValidation(this.form);
     if (this.form.valid) {
-      this.store.dispatch(new fromStore.AddItem(this.form.value));
-      this.closeDialog();
+      if (this.add) {
+        this.store.dispatch(new fromStore.AddItem(this.form.value));
+        this.closeDialog();
+      } else if (!this.add) {
+        // this.store.dispatch(new fromStore.AddItem(this.form.value));
+        this.closeDialog();
+      }
     }
   }
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  checkOpenDialogAction() {
+    this.data ? (this.add = false) : (this.add = true);
   }
 }

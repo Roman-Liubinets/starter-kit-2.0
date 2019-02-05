@@ -39,4 +39,12 @@ export class MainPageComponent implements OnInit {
       this.store.dispatch(new fromStore.LoadItem());
     });
   }
+
+  openEditDialog(item) {
+    const dialogRef = this.dialog.open(AddEditDialogComponent, {
+      panelClass: 'add-item',
+      data: item,
+      disableClose: true,
+    });
+  }
 }
