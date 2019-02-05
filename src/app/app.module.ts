@@ -7,15 +7,16 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './store/app.reducers';
 
-import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
+import { SystemModule } from './system/system.module';
 import { AuthModule } from './auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
-import { reducers } from './store/app.reducers';
 import { AuthService } from './auth/services/auth.service';
 import { SessionService } from './auth/services/session.service';
-import { SystemModule } from './system/system.module';
+import { MainPageService } from './system/main-page/services/main-page.service';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,7 @@ import { SystemModule } from './system/system.module';
       maxAge: 10,
     }),
   ],
-  providers: [AuthService, SessionService],
+  providers: [AuthService, SessionService, MainPageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
