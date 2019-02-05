@@ -16,7 +16,7 @@ import * as mainPageModels from './models/main-page.models';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  items$: Observable<mainPageModels.LoadedItem>;
+  items$: Observable<mainPageModels.LoadedItem[]>;
 
   constructor(
     private dialog: MatDialog,
@@ -25,8 +25,8 @@ export class MainPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.store.dispatch(new fromStore.LoadItem());
     this.items$ = this.store.select<any>(fromStore.getAllItems);
+    this.store.dispatch(new fromStore.LoadItem());
   }
 
   openAddDialog() {

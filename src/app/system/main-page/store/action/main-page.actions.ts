@@ -7,17 +7,16 @@ export const LOAD_ITEM_FAIL = '[MP] Load item Fail';
 
 export class LoadItem implements Action {
   readonly type = LOAD_ITEM;
-  constructor() {}
 }
 
 export class LoadItemSuccess implements Action {
   readonly type = LOAD_ITEM_SUCCESS;
-  constructor(public payload: fromMPModels.LoadedItem) {}
+  constructor(public payload: fromMPModels.LoadedItem[]) {}
 }
 
 export class LoadItemFail implements Action {
   readonly type = LOAD_ITEM_FAIL;
-  constructor(public payload: fromMPModels.LoadedItem) {}
+  constructor(public payload: any) {}
 }
 // -------------------------------------------------------
 // Add Item

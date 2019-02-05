@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+
 import { Effect, Actions } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
 import { map, mergeMap, switchMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
@@ -19,7 +19,7 @@ export class MainPageEffects {
   // Load items Actions
   // ---------------------------------------------------------
   @Effect()
-  load_items$ = this.actions$.ofType(mainPageActions.LOAD_ITEM).pipe(
+  load_item$ = this.actions$.ofType(mainPageActions.LOAD_ITEM).pipe(
     switchMap(() => {
       return this.mainPageService.getItems().pipe(
         map(items => new mainPageActions.LoadItemSuccess(items)),

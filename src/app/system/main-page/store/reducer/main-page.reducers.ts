@@ -2,13 +2,13 @@ import * as mainPageActions from '../action/main-page.actions';
 import * as mainPageModels from '../../models/main-page.models';
 
 export interface MainPageState {
-  items: mainPageModels.LoadedItem;
+  items: mainPageModels.LoadedItem[];
   loaded: boolean;
   loading: boolean;
 }
 
 export const initialState: MainPageState = {
-  items: {},
+  items: [],
   loaded: false,
   loading: false,
 };
@@ -38,7 +38,6 @@ export function reducer(
       };
     }
     case mainPageActions.LOAD_ITEM_SUCCESS: {
-      console.log(state);
       console.log(action.payload);
       return {
         ...state,

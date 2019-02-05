@@ -12,6 +12,6 @@ export class SystemComponent implements OnInit {
   constructor(private store: Store<fromStore.MainPageState>) {}
 
   ngOnInit() {
-    this.store.dispatch(new fromStore.LoadItem());
+    // this.store.dispatch(new fromStore.LoadItem());
   }
 }

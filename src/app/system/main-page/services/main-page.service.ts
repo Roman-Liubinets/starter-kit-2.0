@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+
+import { LoadedItem } from '../models/main-page.models';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +15,9 @@ export class MainPageService {
     return this.http.post('http://localhost:8081/api/item', form_data);
   }
 
-  getItems() {
-    return this.http.get('http://localhost:8081/api/items');
+  getItems(): Observable<LoadedItem[]> {
+    return this.http
+      .get<LoadedItem[]>('http://localhost:8081/api/items')
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 }
